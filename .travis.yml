@@ -24,7 +24,7 @@ script:
 - cp exec-x86_64.so "${APPDIR}/usr/exec.so"
 # Building
 - |
-  linuxdeployqt "${APPDIR}/discord.desktop" \
+  ./linuxdeployqt "${APPDIR}/discord.desktop" \
   -updateinformation="gh-releases-zsync|zilti|discord.AppImage|continuous|Discord*.AppImage.zsync" \
   -appimage
 - bash upload.sh ./*.AppImage*
