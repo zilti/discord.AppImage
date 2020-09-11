@@ -22,7 +22,6 @@ script:
 - cp -r Discord "${APPDIR}/usr/share/Discord"
 # Configuring
 - cp exec-x86_64.so "${APPDIR}/usr/exec.so"
-- cp --dereference "/usr/lib64/libstdc++.so.6" "${APPDIR}/usr/optional/libstdc++/libstdc++.so.6"
 # Building
 - |
   linuxdeployqt "${APPDIR}/discord.desktop" \
