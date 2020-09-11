@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (C) 2014-2020 Free Software Foundation, Inc. -->
+<component type="desktop-application">
+ <id>com.discordapp.desktop</id>
+ <metadata_license>FSFAP</metadata_license>
+ <name>Discord</name>
+ <summary>All-in-one voice and text chat for gamers that's free, secure, and works on both your desktop and phone</summary>
+ <description>
+  <p>
+   Discord is a proprietary freeware VoIP application and digital distribution platform designed for video gaming communities, that specializes in text, image, video and audio communication between users in a chat channel. Discord runs on Windows, macOS, Android, iOS, Linux, and in web browsers. As of December 2018, there are over 200 million unique users of the software.</p>
+ </description>
+ <launchable type="desktop-id">discord.desktop</launchable>
+ <screenshots>
+  <screenshot type="default">
+  <image type="source" width="1001" height="611">https://support.discordapp.com/hc/en-us/article_attachments/204053958/WelcomeChan.png</image>
+ </screenshot>
+ </screenshots>
+ <provides>
+     <binary>Discord</binary>
+ </provides>
+ <releases>
+     <release version="0.0.12" date="2020-09-11">
+	 <description>AppImage update to match new version.</description>
+     </release>
+     <release version="0.0.11" date="2020-08-07">
+	 <description>AppImage update to match new version.</description>
+     </release>
+     <release version="0.0.10" date="2020-02-26">
+	 <description>AppImage update to match new version.</description> 
+     </release>
+     <release version="0.0.9" date="2019-10-10">
+         <description>AppImage update.</description>
+     </release>
+     <release version="0.0.8" date="2019-02-02">
+         <description>Initial AppImage release.</description>
+     </release>
+ </releases>
+ <url type="homepage">https://discordapp.com</url>
+ <update_contact>dziltener_AT_lyrion.ch</update_contact>
+ <project_group>Discord</project_group>
+</component>

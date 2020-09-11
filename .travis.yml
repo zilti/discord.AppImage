@@ -1,0 +1,29 @@
+language: node_js
+sudo: true
+
+script:
+- sudo apt-get install fuse appstream appstream-util git jq patch wget unzip
+- BUILD_SRC=$(pwd)
+# external downloads
+- wget https://github.com/probonopd/uploadtool/raw/master/upload.sh; chmod +x upload.sh
+- wget https://github.com/probonopd/linuxdeployqt/releases/download/7/linuxdeployqt-7-x86_64.AppImage; mv linuxdeployqt* linuxdeployqt; chmod +x linuxdeployqt
+- wget https://github.com/iteufel/nwjs-ffmpeg-prebuilt/releases/download/0.45.1/0.45.1-linux-x64.zip
+- wget https://dl.discordapp.net/apps/linux/0.0.12/discord-0.0.12.tar.gz
+- wget https://github.com/darealshinji/AppImageKit-checkrt/releases/download/continuous/exec-x86_64.so
+- wget https://github.com/darealshinji/AppImageKit-checkrt/releases/download/continuous/AppRun-patched-x86_64
+# Unpacking
+- tar xzvf discord-*.tar.gz
+- unzip 0.45.1-linux-x64.zip
+- mkdir AppDir
+- APPDIR="${BUILD_SRC}/AppDir"
+- cp discord.svg "${APPDIR}"
+- cp discord.desktop "${APPDIR}"
+- mkdir -p "${APPDIR}/usr/share"
+- cp -r Discord "${APPDIR}/usr/share/Discord"
+# Building
+- |
+  bin/linuxdeployqt "${APPDIR}/discord.desktop" \
+  -updateinformation="gh-releases-zsync|zilti|discord.AppImage|continuous|Discord*.AppImage.zsync" \
+  -appimage
+- bash upload.sh ./*.AppImage*
+
