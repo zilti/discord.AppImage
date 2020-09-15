@@ -30,6 +30,7 @@ script:
 - cp -r Discord "${APPDIR}/usr/share/Discord"
 # Configuring
 - cp exec-x86_64.so "${APPDIR}/usr/exec.so"
+- cp libffmpeg.so "${APPDIR}/usr/libffmpeg.so"
 # Building
 - |
   ./linuxdeployqt "${APPDIR}/usr/share/applications/discord.desktop" \
