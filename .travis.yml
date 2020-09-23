@@ -28,6 +28,7 @@ script:
 - cp com.discordapp.appdata.xml "${APPDIR}/usr/share/metainfo"
 - mkdir -p "${APPDIR}/usr/share"
 - cp -r Discord "${APPDIR}/usr/share/Discord"
+- mkdir "${APPDIR}/usr/bin"
 - cd "${APPDIR}/usr/bin"
 - ln -s ../share/Discord/Discord Discord
 - cd "${BUILD_SRC}"
