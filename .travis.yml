@@ -8,7 +8,7 @@ install:
 - sudo apt-get install fuse appstream appstream-util git jq patch wget unzip
 
 before_script:
-- wget https://github.com/probonopd/linuxdeployqt/releases/download/7/linuxdeployqt-7-x86_64.AppImage; mv linuxdeployqt* linuxdeployqt; chmod +x linuxdeployqt
+- wget https://github.com/linuxdeploy/linuxdeploy/releases/download/continuous/linuxdeploy-i386.AppImage -O linuxdeploy; chmod +x linuxdeploy
 - wget https://dl.discordapp.net/apps/linux/0.0.12/discord-0.0.12.tar.gz
 - wget https://github.com/iteufel/nwjs-ffmpeg-prebuilt/releases/download/0.45.1/0.45.1-linux-x64.zip
 - wget https://github.com/darealshinji/AppImageKit-checkrt/releases/download/continuous/exec-x86_64.so
@@ -28,14 +28,16 @@ script:
 - cp com.discordapp.appdata.xml "${APPDIR}/usr/share/metainfo"
 - mkdir -p "${APPDIR}/usr/share"
 - cp -r Discord "${APPDIR}/usr/share/Discord"
+- cd "${APPDIR}/usr/bin"
+- ln -s ../share/Discord/Discord Discord
+- cd "${BUILD_SRC}"
 # Configuring
 - cp exec-x86_64.so "${APPDIR}/usr/exec.so"
 - cp libffmpeg.so "${APPDIR}/usr/libffmpeg.so"
 # Building
 - |
-  ./linuxdeployqt "${APPDIR}/usr/share/applications/discord.desktop" \
-  -updateinformation="gh-releases-zsync|zilti|discord.AppImage|continuous|Discord*.AppImage.zsync" \
-  -appimage
+  ./linuxdeploy --appdir="${APPDIR}" --desktop-file="${APPDIR}/usr/share/applications/discord.desktop" \
+  --output=appimage
 
 after_success:
 - wget https://github.com/probonopd/uploadtool/raw/master/upload.sh; chmod +x upload.sh
